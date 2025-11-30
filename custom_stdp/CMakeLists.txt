@@ -61,6 +61,10 @@ set( MODULE_SOURCES
       tracking_neuron_planner_nestml.cpp tracking_neuron_planner_nestml.h
       state_neuron_nestml.cpp state_neuron_nestml.h
 
+      state_neuron.cpp state_neuron.h
+      state_check_module.cpp state_check_module.h 
+      
+
     )
 
 # 3) We require a header name like this:
