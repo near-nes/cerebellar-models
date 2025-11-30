@@ -62,7 +62,6 @@ set( MODULE_SOURCES
       state_neuron_nestml.cpp state_neuron_nestml.h
 
       state_neuron.cpp state_neuron.h
-      state_check_module.cpp state_check_module.h 
       
 
     )

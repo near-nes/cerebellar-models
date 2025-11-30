@@ -44,6 +44,8 @@
 
 #include "eglif_cond_alpha_multisyn.h"
 
+#include "state_neuron.h"
+
 
 class custom_stdp_module : public nest::NESTExtensionInterface
 {
@@ -78,6 +80,8 @@ void custom_stdp_module::initialize()
     register_state_neuron_nestml("state_neuron_nestml");
 
     register_eglif_cond_alpha_multisyn("eglif_cond_alpha_multisyn");
+
+    register_state_neuron("state_neuron");
 
 
     
