@@ -655,14 +655,12 @@ void eglif_pc_nestml::handle(nest::SpikeEvent &e)
 {
   assert(e.get_delay_steps() > 0);
   assert( e.get_rport() < B_.spike_inputs_.size() );
-
   // === if input from IO do not change Vm =======
   if (e.get_rport() == eglif_pc_nestml::CF_SPIKES)
   {
     return;
   }
   // =============================================
-
   double weight = e.get_weight();
   size_t nestml_buffer_idx = 0;
   if ( weight > 0.0 )
