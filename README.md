@@ -3,6 +3,53 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![codecov](https://codecov.io/gh/dbbs-lab/cerebellar-models/graph/badge.svg?token=KBEE3D83YQ)](https://codecov.io/gh/dbbs-lab/cerebellar-models)
 
+> [!WARNING]  
+> This fork contains customizations for usage of cerebellar-models in [near-nes/controller](https://github.com/near-nes/controller). Main changes: 
+> - removed all simulation configuration from circuit.yaml; 
+> - installed with --no-deps; 
+> - removed report generation.
+
+## Fork maintenance
+
+`feature/plasticity` tracks `upstream/feature/plasticity` ([dbbs-lab](https://github.com/dbbs-lab/cerebellar-models)) with a small set of local patches rebased on top. **Do not push commits directly to this branch** and **do not merge upstream into it**: the branch must stay cleanly rebased onto upstream at all times.
+
+### Branch structure
+
+```
+upstream/feature/plasticity          ← base, never modify directly
+├── feat: make max_peak_rate configurable   ← permanent patch
+├── fix: remove all simulation config       ← permanent patch
+└── <squash-merged feature PRs>
+```
+
+The two permanent patches are intentional divergences from upstream (simulation config stripped for near-nes usage). They must survive every rebase.
+
+### Updating when upstream moves
+
+```bash
+git fetch upstream
+git rebase upstream/feature/plasticity
+# resolve any conflicts, then:
+git push --force origin feature/plasticity
+```
+
+### Adding new work
+
+Open a PR against `feature/plasticity`. Once reviewed, squash-merge it onto the branch:
+
+```bash
+git fetch origin
+git merge --squash origin/<your-branch>
+git commit -m "feat: <description>"
+git push origin feature/plasticity
+```
+
+### What NOT to do
+
+- **`git merge upstream/feature/plasticity`** — creates merge commits that make future rebases a mess (this is how the branch got into trouble before)
+- **`git pull`** on this branch — it will try to merge; always use `git fetch` + `git rebase`
+- **Pushing commits directly** to `feature/plasticity` without a PR: prefer PRs so new work is reviewable and easy to identify during future rebases
+
 # DBBS Cerebellar models: Models of the cerebellum, using the BSB.
 This repository provides the code, configuration and morphology data to reconstruct and simulate 
 cerebellar cortex circuits using the [Brain Scaffold Builder](https://github.com/dbbs-lab/bsb) 
