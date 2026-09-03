@@ -21,15 +21,8 @@
 #include "nest_types.h"
 #include "kernel_manager.h"
 
-// Includes from sli:
-#include "dictdatum.h"
-#include "nest_datums.h"
-#include "nest_time.h"
-#include "nest_types.h"
+#include "dictionary.h"
 #include "config.h"
-
-// Includes from sli:
-#include "dictdatum.h"
 
 
 namespace nest
@@ -83,8 +76,8 @@ public:
    */
   void register_stdp_connection( double t_first_read, double delay ) override;
 
-  void get_status( DictionaryDatum& d ) const override;
-  void set_status( const DictionaryDatum& d ) override;
+  void get_status( Dictionary& d ) const override;
+  void set_status( const Dictionary& d ) override;
 
 protected:
   /**

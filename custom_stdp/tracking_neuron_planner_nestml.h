@@ -46,22 +46,22 @@
 #include "universal_data_logger.h"
 
 // Includes from sli:
-#include "dictdatum.h"
+#include "dictionary.h"
 
 namespace nest
 {
 namespace tracking_neuron_planner_nestml_names
 {
-    const Name _out_rate( "out_rate" );
-    const Name _lambda( "lambda" );
-    const Name _spike_count_out( "spike_count_out" );
-    const Name _current_step( "current_step" );
-    const Name _curr_traj( "curr_traj" );
-    const Name _kp( "kp" );
-    const Name _pos( "pos" );
-    const Name _base_rate( "base_rate" );
-    const Name _simulation_steps( "simulation_steps" );
-    const Name _traj( "traj" );
+    const std::string _out_rate( "out_rate" );
+    const std::string _lambda( "lambda" );
+    const std::string _spike_count_out( "spike_count_out" );
+    const std::string _current_step( "current_step" );
+    const std::string _curr_traj( "curr_traj" );
+    const std::string _kp( "kp" );
+    const std::string _pos( "pos" );
+    const std::string _base_rate( "base_rate" );
+    const std::string _simulation_steps( "simulation_steps" );
+    const std::string _traj( "traj" );
 }
 }
 
@@ -152,8 +152,8 @@ public:
   //   Functions for getting/setting parameters and state values.
   // -------------------------------------------------------------------------
 
-  void get_status(DictionaryDatum &) const override;
-  void set_status(const DictionaryDatum &) override;
+  void get_status(Dictionary &) const override;
+  void set_status(const Dictionary &) override;
 
 
   // -------------------------------------------------------------------------
@@ -605,50 +605,50 @@ inline nest_port_t tracking_neuron_planner_nestml::handles_test_event(nest::Data
   return B_.logger_.connect_logging_device(dlr, recordablesMap_);
 }
 
-inline void tracking_neuron_planner_nestml::get_status(DictionaryDatum &__d) const
+inline void tracking_neuron_planner_nestml::get_status(Dictionary &__d) const
 {
   // parameters
-  def< double >(__d, nest::tracking_neuron_planner_nestml_names::_kp, get_kp());
-  def< bool >(__d, nest::tracking_neuron_planner_nestml_names::_pos, get_pos());
-  def< double >(__d, nest::tracking_neuron_planner_nestml_names::_base_rate, get_base_rate());
-  def< long >(__d, nest::tracking_neuron_planner_nestml_names::_simulation_steps, get_simulation_steps());
-  def< std::vector< double >  >(__d, nest::tracking_neuron_planner_nestml_names::_traj, get_traj());
+  __d[ nest::tracking_neuron_planner_nestml_names::_kp ] = get_kp();
+  __d[ nest::tracking_neuron_planner_nestml_names::_pos ] = get_pos();
+  __d[ nest::tracking_neuron_planner_nestml_names::_base_rate ] = get_base_rate();
+  __d[ nest::tracking_neuron_planner_nestml_names::_simulation_steps ] = get_simulation_steps();
+  __d[ nest::tracking_neuron_planner_nestml_names::_traj ] = get_traj();
 
   // initial values for state variables in ODE or kernel
-  def< double >(__d, nest::tracking_neuron_planner_nestml_names::_out_rate, get_out_rate());
-  def< double >(__d, nest::tracking_neuron_planner_nestml_names::_lambda, get_lambda());
-  def< long >(__d, nest::tracking_neuron_planner_nestml_names::_spike_count_out, get_spike_count_out());
-  def< long >(__d, nest::tracking_neuron_planner_nestml_names::_current_step, get_current_step());
-  def< double >(__d, nest::tracking_neuron_planner_nestml_names::_curr_traj, get_curr_traj());
+  __d[ nest::tracking_neuron_planner_nestml_names::_out_rate ] = get_out_rate();
+  __d[ nest::tracking_neuron_planner_nestml_names::_lambda ] = get_lambda();
+  __d[ nest::tracking_neuron_planner_nestml_names::_spike_count_out ] = get_spike_count_out();
+  __d[ nest::tracking_neuron_planner_nestml_names::_current_step ] = get_current_step();
+  __d[ nest::tracking_neuron_planner_nestml_names::_curr_traj ] = get_curr_traj();
 
   StructuralPlasticityNode::get_status( __d );
 
-  (*__d)[nest::names::recordables] = recordablesMap_.get_list();
+  __d[nest::names::recordables] = recordablesMap_.get_list();
 }
 
-inline void tracking_neuron_planner_nestml::set_status(const DictionaryDatum &__d)
+inline void tracking_neuron_planner_nestml::set_status(const Dictionary &__d)
 {
   // parameters
   double tmp_kp = get_kp();
-  nest::updateValueParam<double>(__d, nest::tracking_neuron_planner_nestml_names::_kp, tmp_kp, this);
+  nest::update_value_param<double>(__d, nest::tracking_neuron_planner_nestml_names::_kp, tmp_kp, this);
   // Resize vectors
   if (tmp_kp != get_kp())
   {
   }
   bool tmp_pos = get_pos();
-  nest::updateValueParam<bool>(__d, nest::tracking_neuron_planner_nestml_names::_pos, tmp_pos, this);
+  nest::update_value_param<bool>(__d, nest::tracking_neuron_planner_nestml_names::_pos, tmp_pos, this);
   // Resize vectors
   if (tmp_pos != get_pos())
   {
   }
   double tmp_base_rate = get_base_rate();
-  nest::updateValueParam<double>(__d, nest::tracking_neuron_planner_nestml_names::_base_rate, tmp_base_rate, this);
+  nest::update_value_param<double>(__d, nest::tracking_neuron_planner_nestml_names::_base_rate, tmp_base_rate, this);
   // Resize vectors
   if (tmp_base_rate != get_base_rate())
   {
   }
   long tmp_simulation_steps = get_simulation_steps();
-  nest::updateValueParam<long>(__d, nest::tracking_neuron_planner_nestml_names::_simulation_steps, tmp_simulation_steps, this);
+  nest::update_value_param<long>(__d, nest::tracking_neuron_planner_nestml_names::_simulation_steps, tmp_simulation_steps, this);
   // Resize vectors
   if (tmp_simulation_steps != get_simulation_steps())
   {
@@ -657,7 +657,7 @@ inline void tracking_neuron_planner_nestml::set_status(const DictionaryDatum &__
     set_traj(_tmp_traj);
   }
   std::vector< double >  tmp_traj = get_traj();
-  updateValue<std::vector< double > >(__d, nest::tracking_neuron_planner_nestml_names::_traj, tmp_traj);
+  __d.update_value( nest::tracking_neuron_planner_nestml_names::_traj, tmp_traj);
   // Resize vectors
   if (tmp_traj != get_traj())
   {
@@ -673,15 +673,15 @@ inline void tracking_neuron_planner_nestml::set_status(const DictionaryDatum &__
 
   // initial values for state variables in ODE or kernel
   double tmp_out_rate = get_out_rate();
-  nest::updateValueParam<double>(__d, nest::tracking_neuron_planner_nestml_names::_out_rate, tmp_out_rate, this);
+  nest::update_value_param<double>(__d, nest::tracking_neuron_planner_nestml_names::_out_rate, tmp_out_rate, this);
   double tmp_lambda = get_lambda();
-  nest::updateValueParam<double>(__d, nest::tracking_neuron_planner_nestml_names::_lambda, tmp_lambda, this);
+  nest::update_value_param<double>(__d, nest::tracking_neuron_planner_nestml_names::_lambda, tmp_lambda, this);
   long tmp_spike_count_out = get_spike_count_out();
-  nest::updateValueParam<long>(__d, nest::tracking_neuron_planner_nestml_names::_spike_count_out, tmp_spike_count_out, this);
+  nest::update_value_param<long>(__d, nest::tracking_neuron_planner_nestml_names::_spike_count_out, tmp_spike_count_out, this);
   long tmp_current_step = get_current_step();
-  nest::updateValueParam<long>(__d, nest::tracking_neuron_planner_nestml_names::_current_step, tmp_current_step, this);
+  nest::update_value_param<long>(__d, nest::tracking_neuron_planner_nestml_names::_current_step, tmp_current_step, this);
   double tmp_curr_traj = get_curr_traj();
-  nest::updateValueParam<double>(__d, nest::tracking_neuron_planner_nestml_names::_curr_traj, tmp_curr_traj, this);
+  nest::update_value_param<double>(__d, nest::tracking_neuron_planner_nestml_names::_curr_traj, tmp_curr_traj, this);
 
   // We now know that (ptmp, stmp) are consistent. We do not
   // write them back to (P_, S_) before we are also sure that

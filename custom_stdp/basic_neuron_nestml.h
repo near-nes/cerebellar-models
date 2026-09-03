@@ -46,24 +46,24 @@
 #include "universal_data_logger.h"
 
 // Includes from sli:
-#include "dictdatum.h"
+#include "dictionary.h"
 
 namespace nest
 {
 namespace basic_neuron_nestml_names
 {
-    const Name _in_rate( "in_rate" );
-    const Name _out_rate( "out_rate" );
-    const Name _spike_count_in( "spike_count_in" );
-    const Name _spike_count_out( "spike_count_out" );
-    const Name _tick( "tick" );
-    const Name _lambda_poisson( "lambda_poisson" );
-    const Name _spikes_buffer( "spikes_buffer" );
-    const Name _kp( "kp" );
-    const Name _pos( "pos" );
-    const Name _base_rate( "base_rate" );
-    const Name _buffer_size( "buffer_size" );
-    const Name _simulation_steps( "simulation_steps" );
+    const std::string _in_rate( "in_rate" );
+    const std::string _out_rate( "out_rate" );
+    const std::string _spike_count_in( "spike_count_in" );
+    const std::string _spike_count_out( "spike_count_out" );
+    const std::string _tick( "tick" );
+    const std::string _lambda_poisson( "lambda_poisson" );
+    const std::string _spikes_buffer( "spikes_buffer" );
+    const std::string _kp( "kp" );
+    const std::string _pos( "pos" );
+    const std::string _base_rate( "base_rate" );
+    const std::string _buffer_size( "buffer_size" );
+    const std::string _simulation_steps( "simulation_steps" );
 }
 }
 
@@ -161,8 +161,8 @@ public:
   //   Functions for getting/setting parameters and state values.
   // -------------------------------------------------------------------------
 
-  void get_status(DictionaryDatum &) const override;
-  void set_status(const DictionaryDatum &) override;
+  void get_status(Dictionary &) const override;
+  void set_status(const Dictionary &) override;
 
 
   // -------------------------------------------------------------------------
@@ -703,58 +703,58 @@ inline nest_port_t basic_neuron_nestml::handles_test_event(nest::DataLoggingRequ
   return B_.logger_.connect_logging_device(dlr, recordablesMap_);
 }
 
-inline void basic_neuron_nestml::get_status(DictionaryDatum &__d) const
+inline void basic_neuron_nestml::get_status(Dictionary &__d) const
 {
   // parameters
-  def< double >(__d, nest::basic_neuron_nestml_names::_kp, get_kp());
-  def< bool >(__d, nest::basic_neuron_nestml_names::_pos, get_pos());
-  def< double >(__d, nest::basic_neuron_nestml_names::_base_rate, get_base_rate());
-  def< double >(__d, nest::basic_neuron_nestml_names::_buffer_size, get_buffer_size());
-  def< long >(__d, nest::basic_neuron_nestml_names::_simulation_steps, get_simulation_steps());
+  __d[ nest::basic_neuron_nestml_names::_kp ] = get_kp();
+  __d[ nest::basic_neuron_nestml_names::_pos ] = get_pos();
+  __d[ nest::basic_neuron_nestml_names::_base_rate ] = get_base_rate();
+  __d[ nest::basic_neuron_nestml_names::_buffer_size ] = get_buffer_size();
+  __d[ nest::basic_neuron_nestml_names::_simulation_steps ] = get_simulation_steps();
 
   // initial values for state variables in ODE or kernel
-  def< double >(__d, nest::basic_neuron_nestml_names::_in_rate, get_in_rate());
-  def< double >(__d, nest::basic_neuron_nestml_names::_out_rate, get_out_rate());
-  def< double >(__d, nest::basic_neuron_nestml_names::_spike_count_in, get_spike_count_in());
-  def< long >(__d, nest::basic_neuron_nestml_names::_spike_count_out, get_spike_count_out());
-  def< long >(__d, nest::basic_neuron_nestml_names::_tick, get_tick());
-  def< double >(__d, nest::basic_neuron_nestml_names::_lambda_poisson, get_lambda_poisson());
-  def< std::vector< double >  >(__d, nest::basic_neuron_nestml_names::_spikes_buffer, get_spikes_buffer());
+  __d[ nest::basic_neuron_nestml_names::_in_rate ] = get_in_rate();
+  __d[ nest::basic_neuron_nestml_names::_out_rate ] = get_out_rate();
+  __d[ nest::basic_neuron_nestml_names::_spike_count_in ] = get_spike_count_in();
+  __d[ nest::basic_neuron_nestml_names::_spike_count_out ] = get_spike_count_out();
+  __d[ nest::basic_neuron_nestml_names::_tick ] = get_tick();
+  __d[ nest::basic_neuron_nestml_names::_lambda_poisson ] = get_lambda_poisson();
+  __d[ nest::basic_neuron_nestml_names::_spikes_buffer ] = get_spikes_buffer();
 
   StructuralPlasticityNode::get_status( __d );
 
-  (*__d)[nest::names::recordables] = recordablesMap_.get_list();
+  __d[nest::names::recordables] = recordablesMap_.get_list();
 }
 
-inline void basic_neuron_nestml::set_status(const DictionaryDatum &__d)
+inline void basic_neuron_nestml::set_status(const Dictionary &__d)
 {
   // parameters
   double tmp_kp = get_kp();
-  nest::updateValueParam<double>(__d, nest::basic_neuron_nestml_names::_kp, tmp_kp, this);
+  nest::update_value_param<double>(__d, nest::basic_neuron_nestml_names::_kp, tmp_kp, this);
   // Resize vectors
   if (tmp_kp != get_kp())
   {
   }
   bool tmp_pos = get_pos();
-  nest::updateValueParam<bool>(__d, nest::basic_neuron_nestml_names::_pos, tmp_pos, this);
+  nest::update_value_param<bool>(__d, nest::basic_neuron_nestml_names::_pos, tmp_pos, this);
   // Resize vectors
   if (tmp_pos != get_pos())
   {
   }
   double tmp_base_rate = get_base_rate();
-  nest::updateValueParam<double>(__d, nest::basic_neuron_nestml_names::_base_rate, tmp_base_rate, this);
+  nest::update_value_param<double>(__d, nest::basic_neuron_nestml_names::_base_rate, tmp_base_rate, this);
   // Resize vectors
   if (tmp_base_rate != get_base_rate())
   {
   }
   double tmp_buffer_size = get_buffer_size();
-  nest::updateValueParam<double>(__d, nest::basic_neuron_nestml_names::_buffer_size, tmp_buffer_size, this);
+  nest::update_value_param<double>(__d, nest::basic_neuron_nestml_names::_buffer_size, tmp_buffer_size, this);
   // Resize vectors
   if (tmp_buffer_size != get_buffer_size())
   {
   }
   long tmp_simulation_steps = get_simulation_steps();
-  nest::updateValueParam<long>(__d, nest::basic_neuron_nestml_names::_simulation_steps, tmp_simulation_steps, this);
+  nest::update_value_param<long>(__d, nest::basic_neuron_nestml_names::_simulation_steps, tmp_simulation_steps, this);
   // Resize vectors
   if (tmp_simulation_steps != get_simulation_steps())
   {
@@ -765,19 +765,19 @@ inline void basic_neuron_nestml::set_status(const DictionaryDatum &__d)
 
   // initial values for state variables in ODE or kernel
   double tmp_in_rate = get_in_rate();
-  nest::updateValueParam<double>(__d, nest::basic_neuron_nestml_names::_in_rate, tmp_in_rate, this);
+  nest::update_value_param<double>(__d, nest::basic_neuron_nestml_names::_in_rate, tmp_in_rate, this);
   double tmp_out_rate = get_out_rate();
-  nest::updateValueParam<double>(__d, nest::basic_neuron_nestml_names::_out_rate, tmp_out_rate, this);
+  nest::update_value_param<double>(__d, nest::basic_neuron_nestml_names::_out_rate, tmp_out_rate, this);
   double tmp_spike_count_in = get_spike_count_in();
-  nest::updateValueParam<double>(__d, nest::basic_neuron_nestml_names::_spike_count_in, tmp_spike_count_in, this);
+  nest::update_value_param<double>(__d, nest::basic_neuron_nestml_names::_spike_count_in, tmp_spike_count_in, this);
   long tmp_spike_count_out = get_spike_count_out();
-  nest::updateValueParam<long>(__d, nest::basic_neuron_nestml_names::_spike_count_out, tmp_spike_count_out, this);
+  nest::update_value_param<long>(__d, nest::basic_neuron_nestml_names::_spike_count_out, tmp_spike_count_out, this);
   long tmp_tick = get_tick();
-  nest::updateValueParam<long>(__d, nest::basic_neuron_nestml_names::_tick, tmp_tick, this);
+  nest::update_value_param<long>(__d, nest::basic_neuron_nestml_names::_tick, tmp_tick, this);
   double tmp_lambda_poisson = get_lambda_poisson();
-  nest::updateValueParam<double>(__d, nest::basic_neuron_nestml_names::_lambda_poisson, tmp_lambda_poisson, this);
+  nest::update_value_param<double>(__d, nest::basic_neuron_nestml_names::_lambda_poisson, tmp_lambda_poisson, this);
   std::vector< double >  tmp_spikes_buffer = get_spikes_buffer();
-  updateValue<std::vector< double > >(__d, nest::basic_neuron_nestml_names::_spikes_buffer, tmp_spikes_buffer);
+  __d.update_value( nest::basic_neuron_nestml_names::_spikes_buffer, tmp_spikes_buffer);
    
   // Check if the new vector size matches its original size
   if ( tmp_spikes_buffer.size() != tmp_simulation_steps )

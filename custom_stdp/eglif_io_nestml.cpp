@@ -35,11 +35,7 @@
 #include "universal_data_logger_impl.h"
 
 // Includes from sli:
-#include "dict.h"
-#include "dictutils.h"
-#include "doubledatum.h"
-#include "integerdatum.h"
-#include "lockptrdatum.h"
+#include "dictionary.h"
 
 #include "eglif_io_nestml.h"
 
@@ -247,7 +243,7 @@ eglif_io_nestml::~eglif_io_nestml()
 // ---------------------------------------------------------------------------
 void eglif_io_nestml::calibrate_time( const nest::TimeConverter& tc )
 {
-  LOG( nest::M_WARNING,
+  LOG( nest::VerbosityLevel::WARNING,
     "eglif_io_nestml",
     "Simulation resolution has changed. Internal state and parameters of the model have been reset!" );
 
