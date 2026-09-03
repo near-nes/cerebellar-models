@@ -52,48 +52,48 @@
 #include "universal_data_logger.h"
 
 // Includes from sli:
-#include "dictdatum.h"
+#include "dictionary.h"
 
 namespace nest
 {
 namespace eglif_cond_alpha_multisyn_names
 {
-    const Name _V_m( "V_m" );
-    const Name _I_dep( "I_dep" );
-    const Name _I_adap( "I_adap" );
-    const Name _r( "r" );
-    const Name _syn_kernel2__X__syn2_spike( "syn_kernel2__X__syn2_spike" );
-    const Name _syn_kernel2__X__syn2_spike__d( "syn_kernel2__X__syn2_spike__d" );
-    const Name _syn_kernel4__X__syn4_spike( "syn_kernel4__X__syn4_spike" );
-    const Name _syn_kernel4__X__syn4_spike__d( "syn_kernel4__X__syn4_spike__d" );
-    const Name _syn_kernel1__X__syn1_spike( "syn_kernel1__X__syn1_spike" );
-    const Name _syn_kernel1__X__syn1_spike__d( "syn_kernel1__X__syn1_spike__d" );
-    const Name _syn_kernel3__X__syn3_spike( "syn_kernel3__X__syn3_spike" );
-    const Name _syn_kernel3__X__syn3_spike__d( "syn_kernel3__X__syn3_spike__d" );
-    const Name _I_syn( "I_syn" );
-    const Name _C_m( "C_m" );
-    const Name _tau_m( "tau_m" );
-    const Name _E_L( "E_L" );
-    const Name _t_ref( "t_ref" );
-    const Name _I_e( "I_e" );
-    const Name _V_min( "V_min" );
-    const Name _V_th( "V_th" );
-    const Name _lambda_0( "lambda_0" );
-    const Name _tau_V( "tau_V" );
-    const Name _V_reset( "V_reset" );
-    const Name _k_1( "k_1" );
-    const Name _k_2( "k_2" );
-    const Name _k_adap( "k_adap" );
-    const Name _A1( "A1" );
-    const Name _A2( "A2" );
-    const Name _E_rev1( "E_rev1" );
-    const Name _tau_syn1( "tau_syn1" );
-    const Name _E_rev2( "E_rev2" );
-    const Name _tau_syn2( "tau_syn2" );
-    const Name _E_rev3( "E_rev3" );
-    const Name _tau_syn3( "tau_syn3" );
-    const Name _E_rev4( "E_rev4" );
-    const Name _tau_syn4( "tau_syn4" );
+    const std::string _V_m( "V_m" );
+    const std::string _I_dep( "I_dep" );
+    const std::string _I_adap( "I_adap" );
+    const std::string _r( "r" );
+    const std::string _syn_kernel2__X__syn2_spike( "syn_kernel2__X__syn2_spike" );
+    const std::string _syn_kernel2__X__syn2_spike__d( "syn_kernel2__X__syn2_spike__d" );
+    const std::string _syn_kernel4__X__syn4_spike( "syn_kernel4__X__syn4_spike" );
+    const std::string _syn_kernel4__X__syn4_spike__d( "syn_kernel4__X__syn4_spike__d" );
+    const std::string _syn_kernel1__X__syn1_spike( "syn_kernel1__X__syn1_spike" );
+    const std::string _syn_kernel1__X__syn1_spike__d( "syn_kernel1__X__syn1_spike__d" );
+    const std::string _syn_kernel3__X__syn3_spike( "syn_kernel3__X__syn3_spike" );
+    const std::string _syn_kernel3__X__syn3_spike__d( "syn_kernel3__X__syn3_spike__d" );
+    const std::string _I_syn( "I_syn" );
+    const std::string _C_m( "C_m" );
+    const std::string _tau_m( "tau_m" );
+    const std::string _E_L( "E_L" );
+    const std::string _t_ref( "t_ref" );
+    const std::string _I_e( "I_e" );
+    const std::string _V_min( "V_min" );
+    const std::string _V_th( "V_th" );
+    const std::string _lambda_0( "lambda_0" );
+    const std::string _tau_V( "tau_V" );
+    const std::string _V_reset( "V_reset" );
+    const std::string _k_1( "k_1" );
+    const std::string _k_2( "k_2" );
+    const std::string _k_adap( "k_adap" );
+    const std::string _A1( "A1" );
+    const std::string _A2( "A2" );
+    const std::string _E_rev1( "E_rev1" );
+    const std::string _tau_syn1( "tau_syn1" );
+    const std::string _E_rev2( "E_rev2" );
+    const std::string _tau_syn2( "tau_syn2" );
+    const std::string _E_rev3( "E_rev3" );
+    const std::string _tau_syn3( "tau_syn3" );
+    const std::string _E_rev4( "E_rev4" );
+    const std::string _tau_syn4( "tau_syn4" );
 }
 }
 
@@ -277,8 +277,8 @@ public:
   //   Functions for getting/setting parameters and state values.
   // -------------------------------------------------------------------------
 
-  void get_status(DictionaryDatum &) const override;
-  void set_status(const DictionaryDatum &) override;
+  void get_status(Dictionary &) const override;
+  void set_status(const Dictionary &) override;
 
 
   // -------------------------------------------------------------------------
@@ -1235,137 +1235,137 @@ inline nest_port_t eglif_cond_alpha_multisyn::handles_test_event(nest::DataLoggi
   return B_.logger_.connect_logging_device(dlr, recordablesMap_);
 }
 
-inline void eglif_cond_alpha_multisyn::get_status(DictionaryDatum &__d) const
+inline void eglif_cond_alpha_multisyn::get_status(Dictionary &__d) const
 {
   // parameters
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_C_m, get_C_m());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_m, get_tau_m());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_L, get_E_L());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_t_ref, get_t_ref());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_I_e, get_I_e());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_V_min, get_V_min());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_V_th, get_V_th());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_lambda_0, get_lambda_0());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_V, get_tau_V());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_V_reset, get_V_reset());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_k_1, get_k_1());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_k_2, get_k_2());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_k_adap, get_k_adap());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_A1, get_A1());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_A2, get_A2());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_rev1, get_E_rev1());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_syn1, get_tau_syn1());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_rev2, get_E_rev2());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_syn2, get_tau_syn2());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_rev3, get_E_rev3());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_syn3, get_tau_syn3());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_rev4, get_E_rev4());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_syn4, get_tau_syn4());
+  __d[ nest::eglif_cond_alpha_multisyn_names::_C_m ] = get_C_m();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_tau_m ] = get_tau_m();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_E_L ] = get_E_L();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_t_ref ] = get_t_ref();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_I_e ] = get_I_e();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_V_min ] = get_V_min();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_V_th ] = get_V_th();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_lambda_0 ] = get_lambda_0();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_tau_V ] = get_tau_V();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_V_reset ] = get_V_reset();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_k_1 ] = get_k_1();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_k_2 ] = get_k_2();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_k_adap ] = get_k_adap();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_A1 ] = get_A1();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_A2 ] = get_A2();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_E_rev1 ] = get_E_rev1();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_tau_syn1 ] = get_tau_syn1();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_E_rev2 ] = get_E_rev2();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_tau_syn2 ] = get_tau_syn2();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_E_rev3 ] = get_E_rev3();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_tau_syn3 ] = get_tau_syn3();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_E_rev4 ] = get_E_rev4();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_tau_syn4 ] = get_tau_syn4();
 
   // initial values for state variables in ODE or kernel
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_V_m, get_V_m());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_I_dep, get_I_dep());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_I_adap, get_I_adap());
-  def<long>(__d, nest::eglif_cond_alpha_multisyn_names::_r, get_r());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel2__X__syn2_spike, get_syn_kernel2__X__syn2_spike());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel2__X__syn2_spike__d, get_syn_kernel2__X__syn2_spike__d());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel4__X__syn4_spike, get_syn_kernel4__X__syn4_spike());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel4__X__syn4_spike__d, get_syn_kernel4__X__syn4_spike__d());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel1__X__syn1_spike, get_syn_kernel1__X__syn1_spike());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel1__X__syn1_spike__d, get_syn_kernel1__X__syn1_spike__d());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel3__X__syn3_spike, get_syn_kernel3__X__syn3_spike());
-  def<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel3__X__syn3_spike__d, get_syn_kernel3__X__syn3_spike__d());
+  __d[ nest::eglif_cond_alpha_multisyn_names::_V_m ] = get_V_m();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_I_dep ] = get_I_dep();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_I_adap ] = get_I_adap();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_r ] = get_r();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_syn_kernel2__X__syn2_spike ] = get_syn_kernel2__X__syn2_spike();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_syn_kernel2__X__syn2_spike__d ] = get_syn_kernel2__X__syn2_spike__d();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_syn_kernel4__X__syn4_spike ] = get_syn_kernel4__X__syn4_spike();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_syn_kernel4__X__syn4_spike__d ] = get_syn_kernel4__X__syn4_spike__d();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_syn_kernel1__X__syn1_spike ] = get_syn_kernel1__X__syn1_spike();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_syn_kernel1__X__syn1_spike__d ] = get_syn_kernel1__X__syn1_spike__d();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_syn_kernel3__X__syn3_spike ] = get_syn_kernel3__X__syn3_spike();
+  __d[ nest::eglif_cond_alpha_multisyn_names::_syn_kernel3__X__syn3_spike__d ] = get_syn_kernel3__X__syn3_spike__d();
 
   ArchivingNode::get_status( __d );
-  DictionaryDatum __receptor_type = new Dictionary();
-    ( *__receptor_type )[ "SYN1_SPIKE" ] = 1;
-    ( *__receptor_type )[ "SYN2_SPIKE" ] = 2;
-    ( *__receptor_type )[ "SYN3_SPIKE" ] = 3;
-    ( *__receptor_type )[ "SYN4_SPIKE" ] = 4;
-    ( *__d )[ "receptor_types" ] = __receptor_type;
+  Dictionary __receptor_type = Dictionary();
+    __receptor_type[ "SYN1_SPIKE" ] = 1;
+    __receptor_type[ "SYN2_SPIKE" ] = 2;
+    __receptor_type[ "SYN3_SPIKE" ] = 3;
+    __receptor_type[ "SYN4_SPIKE" ] = 4;
+    __d[ "receptor_types" ] = __receptor_type;
 
-  (*__d)[nest::names::recordables] = recordablesMap_.get_list();
-  def< double >(__d, nest::names::gsl_error_tol, P_.__gsl_error_tol);
+  __d[nest::names::recordables] = recordablesMap_.get_list();
+  __d[ nest::names::gsl_error_tol ] = P_.__gsl_error_tol;
   if ( P_.__gsl_error_tol <= 0. ){
     throw nest::BadProperty( "The gsl_error_tol must be strictly positive." );
   }
 }
 
-inline void eglif_cond_alpha_multisyn::set_status(const DictionaryDatum &__d)
+inline void eglif_cond_alpha_multisyn::set_status(const Dictionary &__d)
 {
   // parameters
   double tmp_C_m = get_C_m();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_C_m, tmp_C_m, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_C_m, tmp_C_m, this);
   double tmp_tau_m = get_tau_m();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_m, tmp_tau_m, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_m, tmp_tau_m, this);
   double tmp_E_L = get_E_L();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_L, tmp_E_L, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_L, tmp_E_L, this);
   double tmp_t_ref = get_t_ref();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_t_ref, tmp_t_ref, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_t_ref, tmp_t_ref, this);
   double tmp_I_e = get_I_e();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_I_e, tmp_I_e, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_I_e, tmp_I_e, this);
   double tmp_V_min = get_V_min();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_V_min, tmp_V_min, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_V_min, tmp_V_min, this);
   double tmp_V_th = get_V_th();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_V_th, tmp_V_th, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_V_th, tmp_V_th, this);
   double tmp_lambda_0 = get_lambda_0();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_lambda_0, tmp_lambda_0, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_lambda_0, tmp_lambda_0, this);
   double tmp_tau_V = get_tau_V();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_V, tmp_tau_V, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_V, tmp_tau_V, this);
   double tmp_V_reset = get_V_reset();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_V_reset, tmp_V_reset, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_V_reset, tmp_V_reset, this);
   double tmp_k_1 = get_k_1();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_k_1, tmp_k_1, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_k_1, tmp_k_1, this);
   double tmp_k_2 = get_k_2();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_k_2, tmp_k_2, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_k_2, tmp_k_2, this);
   double tmp_k_adap = get_k_adap();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_k_adap, tmp_k_adap, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_k_adap, tmp_k_adap, this);
   double tmp_A1 = get_A1();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_A1, tmp_A1, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_A1, tmp_A1, this);
   double tmp_A2 = get_A2();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_A2, tmp_A2, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_A2, tmp_A2, this);
   double tmp_E_rev1 = get_E_rev1();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_rev1, tmp_E_rev1, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_rev1, tmp_E_rev1, this);
   double tmp_tau_syn1 = get_tau_syn1();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_syn1, tmp_tau_syn1, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_syn1, tmp_tau_syn1, this);
   double tmp_E_rev2 = get_E_rev2();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_rev2, tmp_E_rev2, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_rev2, tmp_E_rev2, this);
   double tmp_tau_syn2 = get_tau_syn2();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_syn2, tmp_tau_syn2, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_syn2, tmp_tau_syn2, this);
   double tmp_E_rev3 = get_E_rev3();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_rev3, tmp_E_rev3, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_rev3, tmp_E_rev3, this);
   double tmp_tau_syn3 = get_tau_syn3();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_syn3, tmp_tau_syn3, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_syn3, tmp_tau_syn3, this);
   double tmp_E_rev4 = get_E_rev4();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_rev4, tmp_E_rev4, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_E_rev4, tmp_E_rev4, this);
   double tmp_tau_syn4 = get_tau_syn4();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_syn4, tmp_tau_syn4, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_tau_syn4, tmp_tau_syn4, this);
 
   // initial values for state variables in ODE or kernel
   double tmp_V_m = get_V_m();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_V_m, tmp_V_m, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_V_m, tmp_V_m, this);
   double tmp_I_dep = get_I_dep();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_I_dep, tmp_I_dep, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_I_dep, tmp_I_dep, this);
   double tmp_I_adap = get_I_adap();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_I_adap, tmp_I_adap, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_I_adap, tmp_I_adap, this);
   long tmp_r = get_r();
-  nest::updateValueParam<long>(__d, nest::eglif_cond_alpha_multisyn_names::_r, tmp_r, this);
+  nest::update_value_param<long>(__d, nest::eglif_cond_alpha_multisyn_names::_r, tmp_r, this);
   double tmp_syn_kernel2__X__syn2_spike = get_syn_kernel2__X__syn2_spike();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel2__X__syn2_spike, tmp_syn_kernel2__X__syn2_spike, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel2__X__syn2_spike, tmp_syn_kernel2__X__syn2_spike, this);
   double tmp_syn_kernel2__X__syn2_spike__d = get_syn_kernel2__X__syn2_spike__d();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel2__X__syn2_spike__d, tmp_syn_kernel2__X__syn2_spike__d, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel2__X__syn2_spike__d, tmp_syn_kernel2__X__syn2_spike__d, this);
   double tmp_syn_kernel4__X__syn4_spike = get_syn_kernel4__X__syn4_spike();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel4__X__syn4_spike, tmp_syn_kernel4__X__syn4_spike, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel4__X__syn4_spike, tmp_syn_kernel4__X__syn4_spike, this);
   double tmp_syn_kernel4__X__syn4_spike__d = get_syn_kernel4__X__syn4_spike__d();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel4__X__syn4_spike__d, tmp_syn_kernel4__X__syn4_spike__d, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel4__X__syn4_spike__d, tmp_syn_kernel4__X__syn4_spike__d, this);
   double tmp_syn_kernel1__X__syn1_spike = get_syn_kernel1__X__syn1_spike();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel1__X__syn1_spike, tmp_syn_kernel1__X__syn1_spike, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel1__X__syn1_spike, tmp_syn_kernel1__X__syn1_spike, this);
   double tmp_syn_kernel1__X__syn1_spike__d = get_syn_kernel1__X__syn1_spike__d();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel1__X__syn1_spike__d, tmp_syn_kernel1__X__syn1_spike__d, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel1__X__syn1_spike__d, tmp_syn_kernel1__X__syn1_spike__d, this);
   double tmp_syn_kernel3__X__syn3_spike = get_syn_kernel3__X__syn3_spike();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel3__X__syn3_spike, tmp_syn_kernel3__X__syn3_spike, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel3__X__syn3_spike, tmp_syn_kernel3__X__syn3_spike, this);
   double tmp_syn_kernel3__X__syn3_spike__d = get_syn_kernel3__X__syn3_spike__d();
-  nest::updateValueParam<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel3__X__syn3_spike__d, tmp_syn_kernel3__X__syn3_spike__d, this);
+  nest::update_value_param<double>(__d, nest::eglif_cond_alpha_multisyn_names::_syn_kernel3__X__syn3_spike__d, tmp_syn_kernel3__X__syn3_spike__d, this);
 
   // We now know that (ptmp, stmp) are consistent. We do not
   // write them back to (P_, S_) before we are also sure that
@@ -1413,7 +1413,7 @@ inline void eglif_cond_alpha_multisyn::set_status(const DictionaryDatum &__d)
 
 
 
-  updateValue< double >(__d, nest::names::gsl_error_tol, P_.__gsl_error_tol);
+  __d.update_value( nest::names::gsl_error_tol, P_.__gsl_error_tol);
   if ( P_.__gsl_error_tol <= 0. )
   {
     throw nest::BadProperty( "The gsl_error_tol must be strictly positive." );

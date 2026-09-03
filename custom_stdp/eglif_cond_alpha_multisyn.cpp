@@ -35,11 +35,7 @@
 #include "universal_data_logger_impl.h"
 
 // Includes from sli:
-#include "dict.h"
-#include "dictutils.h"
-#include "doubledatum.h"
-#include "integerdatum.h"
-#include "lockptrdatum.h"
+#include "dictionary.h"
 
 #include "eglif_cond_alpha_multisyn.h"
 void
@@ -229,7 +225,7 @@ eglif_cond_alpha_multisyn::~eglif_cond_alpha_multisyn()
 // ---------------------------------------------------------------------------
 void eglif_cond_alpha_multisyn::calibrate_time( const nest::TimeConverter& tc )
 {
-  LOG( nest::M_WARNING,
+  LOG( nest::VerbosityLevel::WARNING,
     "eglif_cond_alpha_multisyn",
     "Simulation resolution has changed. Internal state and parameters of the model have been reset!" );
 

@@ -35,11 +35,7 @@
 #include "universal_data_logger_impl.h"
 
 // Includes from sli:
-#include "dict.h"
-#include "dictutils.h"
-#include "doubledatum.h"
-#include "integerdatum.h"
-#include "lockptrdatum.h"
+#include "dictionary.h"
 
 #include "tracking_neuron_planner_nestml.h"
 void
@@ -162,7 +158,7 @@ tracking_neuron_planner_nestml::~tracking_neuron_planner_nestml()
 // ---------------------------------------------------------------------------
 void tracking_neuron_planner_nestml::calibrate_time( const nest::TimeConverter& tc )
 {
-  LOG( nest::M_WARNING,
+  LOG( nest::VerbosityLevel::WARNING,
     "tracking_neuron_planner_nestml",
     "Simulation resolution has changed. Internal state and parameters of the model have been reset!" );
 

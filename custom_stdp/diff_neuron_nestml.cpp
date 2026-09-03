@@ -35,11 +35,7 @@
 #include "universal_data_logger_impl.h"
 
 // Includes from sli:
-#include "dict.h"
-#include "dictutils.h"
-#include "doubledatum.h"
-#include "integerdatum.h"
-#include "lockptrdatum.h"
+#include "dictionary.h"
 
 #include "diff_neuron_nestml.h"
 void
@@ -190,7 +186,7 @@ diff_neuron_nestml::~diff_neuron_nestml()
 // ---------------------------------------------------------------------------
 void diff_neuron_nestml::calibrate_time( const nest::TimeConverter& tc )
 {
-  LOG( nest::M_WARNING,
+  LOG( nest::VerbosityLevel::WARNING,
     "diff_neuron_nestml",
     "Simulation resolution has changed. Internal state and parameters of the model have been reset!" );
 
