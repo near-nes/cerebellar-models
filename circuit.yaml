@@ -1,4 +1,4 @@
-name: DBBS Mouse cerebellum configuration v4.2+stripped
+name: DBBS Mouse cerebellum configuration v4.2
 storage:
   engine: hdf5
   root: mouse_abstract_only.hdf5
@@ -9,11 +9,15 @@ network:
   - 100.0
   x: 300.0
   y: 200.0
-  z: 695.0
-# components:
-# - module: cerebellar_models/nest_models/build_models.py
+  z: 595.0
+#components:
+#- module: cerebellar_models/nest_models/build_models.py
 morphologies:
 - file: ./morphologies/GranuleCell.swc
+  pipeline:
+  - func: swap_axes
+    axis1: 1
+    axis2: 2
   parser:
     skip_boundary_labels:
     - soma
@@ -30,11 +34,11 @@ morphologies:
       '19':
       - axon
       - parallel_fiber
-  pipeline:
-  - axis1: 1
-    axis2: 2
-    func: swap_axes
 - file: ./morphologies/GolgiCell.swc
+  pipeline:
+  - func: swap_axes
+    axis1: 1
+    axis2: 2
   parser:
     skip_boundary_labels:
     - soma
@@ -48,11 +52,11 @@ morphologies:
       '18':
       - axon
       - axon_initial_segment
-  pipeline:
-  - axis1: 1
-    axis2: 2
-    func: swap_axes
 - file: ./morphologies/PurkinjeCell.swc
+  pipeline:
+  - func: swap_axes
+    axis1: 1
+    axis2: 2
   parser:
     skip_boundary_labels:
     - soma
@@ -80,11 +84,11 @@ morphologies:
       - dendrites
       - aa_targets
       - sc_targets
-  pipeline:
-  - axis1: 1
-    axis2: 2
-    func: swap_axes
 - file: ./morphologies/StellateCell.swc
+  pipeline:
+  - func: swap_axes
+    axis1: 1
+    axis2: 2
   parser:
     skip_boundary_labels:
     - soma
@@ -98,11 +102,11 @@ morphologies:
       '18':
       - axon
       - axon_initial_segment
-  pipeline:
-  - axis1: 1
-    axis2: 2
-    func: swap_axes
 - file: ./morphologies/BasketCell.swc
+  pipeline:
+  - func: swap_axes
+    axis1: 1
+    axis2: 2
   parser:
     skip_boundary_labels:
     - soma
@@ -110,10 +114,6 @@ morphologies:
       '16':
       - axon
       - axon_initial_segment
-  pipeline:
-  - axis1: 1
-    axis2: 2
-    func: swap_axes
 regions:
   cerebellar_cortex:
     children:
@@ -132,10 +132,6 @@ regions:
     type: group
 partitions:
   granular_layer:
-    origin:
-    - 0.0
-    - 0.0
-    - 300.0
     thickness: 130.0
   purkinje_layer:
     thickness: 15.0
@@ -147,9 +143,13 @@ partitions:
     origin:
     - 0.0
     - 0.0
-    - 100.0
+    - -200
     thickness: 200.0
   io_layer:
+    origin:
+    - 0.0
+    - 0.0
+    - -300
     thickness: 100.0
 cell_types:
   glomerulus:
@@ -362,7 +362,7 @@ connectivity:
     voxels_post: 500
     voxels_pre: 500
   golgi_to_golgi:
-    affinity: 0.5
+    affinity: 0.41
     contacts:
       distribution: norm
       loc: 160
@@ -410,15 +410,13 @@ connectivity:
     strategy: bsb.connectivity.VoxelIntersection
     voxels_post: 500
     voxels_pre: 500
-  ascending_axon_to_purkinje_plus:
+  ascending_axon_to_purkinje:
     affinity: 0.05
     postsynaptic:
       cell_types:
       - purkinje_cell
       morphology_labels:
       - aa_targets
-      labels:
-      - plus
     presynaptic:
       cell_types:
       - granule_cell
@@ -427,49 +425,13 @@ connectivity:
     strategy: bsb.connectivity.VoxelIntersection
     voxels_post: 500
     voxels_pre: 500
-  ascending_axon_to_purkinje_minus:
-    affinity: 0.05
-    postsynaptic:
-      cell_types:
-      - purkinje_cell
-      morphology_labels:
-      - aa_targets
-      labels:
-      - minus
-    presynaptic:
-      cell_types:
-      - granule_cell
-      morphology_labels:
-      - ascending_axon
-    strategy: bsb.connectivity.VoxelIntersection
-    voxels_post: 500
-    voxels_pre: 500
-  parallel_fiber_to_purkinje_plus:
+  parallel_fiber_to_purkinje:
     affinity: 0.1
     postsynaptic:
       cell_types:
       - purkinje_cell
       morphology_labels:
       - pf_targets
-      labels:
-      - plus
-    presynaptic:
-      cell_types:
-      - granule_cell
-      morphology_labels:
-      - parallel_fiber
-    strategy: bsb.connectivity.VoxelIntersection
-    voxels_post: 500
-    voxels_pre: 500
-  parallel_fiber_to_purkinje_minus:
-    affinity: 0.1
-    postsynaptic:
-      cell_types:
-      - purkinje_cell
-      morphology_labels:
-      - pf_targets
-      labels:
-      - minus
     presynaptic:
       cell_types:
       - granule_cell
@@ -508,14 +470,12 @@ connectivity:
     strategy: bsb.connectivity.VoxelIntersection
     voxels_post: 500
     voxels_pre: 500
-  basket_to_purkinje_plus:
+  basket_to_purkinje:
     postsynaptic:
       cell_types:
       - purkinje_cell
       morphology_labels:
       - soma
-      labels:
-      - plus
     presynaptic:
       cell_types:
       - basket_cell
@@ -524,56 +484,17 @@ connectivity:
     strategy: bsb.connectivity.VoxelIntersection
     voxels_post: 500
     voxels_pre: 500
-  basket_to_purkinje_minus:
-    postsynaptic:
-      cell_types:
-      - purkinje_cell
-      morphology_labels:
-      - soma
-      labels:
-      - minus
-    presynaptic:
-      cell_types:
-      - basket_cell
-      morphology_labels:
-      - axon
-    strategy: bsb.connectivity.VoxelIntersection
-    voxels_post: 500
-    voxels_pre: 500
-  stellate_to_purkinje_plus:
+  stellate_to_purkinje:
     affinity: 0.1
     contacts:
       distribution: norm
-      loc: 10
+      loc: 4
       scale: 0.3
     postsynaptic:
       cell_types:
       - purkinje_cell
       morphology_labels:
       - sc_targets
-      labels:
-      - plus
-    presynaptic:
-      cell_types:
-      - stellate_cell
-      morphology_labels:
-      - axon
-    strategy: bsb.connectivity.VoxelIntersection
-    voxels_post: 500
-    voxels_pre: 500
-  stellate_to_purkinje_minus:
-    affinity: 0.1
-    contacts:
-      distribution: norm
-      loc: 10
-      scale: 0.3
-    postsynaptic:
-      cell_types:
-      - purkinje_cell
-      morphology_labels:
-      - sc_targets
-      labels:
-      - minus
     presynaptic:
       cell_types:
       - stellate_cell
@@ -620,8 +541,8 @@ connectivity:
     strategy: bsb.connectivity.VoxelIntersection
     voxels_post: 500
     voxels_pre: 500
-  purkinje_to_dcn_p_plus:
-    outdegree: 45
+  purkinje_to_dcn_p:
+    affinity: 0.375
     postsynaptic:
       cell_types:
       - dcn_p
@@ -634,9 +555,9 @@ connectivity:
       - plus
       morphology_labels:
       - axon
-    strategy: bsb.connectivity.FixedOutdegree
+    strategy: bsb.connectivity.AllToAll
   purkinje_to_dcn_p_minus:
-    outdegree: 45
+    affinity: 0.375
     postsynaptic:
       cell_types:
       - dcn_p
@@ -649,9 +570,9 @@ connectivity:
       - minus
       morphology_labels:
       - axon
-    strategy: bsb.connectivity.FixedOutdegree
-  purkinje_to_dcn_i_plus:
-    outdegree: 12
+    strategy: bsb.connectivity.AllToAll
+  purkinje_to_dcn_i:
+    affinity: 0.18
     postsynaptic:
       cell_types:
       - dcn_i
@@ -664,9 +585,9 @@ connectivity:
       - plus
       morphology_labels:
       - axon
-    strategy: bsb.connectivity.FixedOutdegree
+    strategy: bsb.connectivity.AllToAll
   purkinje_to_dcn_i_minus:
-    outdegree: 12
+    affinity: 0.18
     postsynaptic:
       cell_types:
       - dcn_i
@@ -679,30 +600,17 @@ connectivity:
       - minus
       morphology_labels:
       - axon
-    strategy: bsb.connectivity.FixedOutdegree
-  mossy_fibers_to_dcn_p_plus:
-    indegree: 48
+    strategy: bsb.connectivity.AllToAll
+  mossy_fibers_to_dcn_p:
+    affinity: 0.4
     postsynaptic:
       cell_types:
       - dcn_p
-      labels:
-      - plus
     presynaptic:
       cell_types:
       - mossy_fibers
-    strategy: bsb.connectivity.FixedIndegree
-  mossy_fibers_to_dcn_p_minus:
-    indegree: 48
-    postsynaptic:
-      cell_types:
-      - dcn_p
-      labels:
-      - minus
-    presynaptic:
-      cell_types:
-      - mossy_fibers
-    strategy: bsb.connectivity.FixedIndegree
-  io_to_purkinje_plus:
+    strategy: bsb.connectivity.AllToAll
+  io_to_purkinje:
     indegree: 1
     postsynaptic:
       cell_types:
@@ -728,50 +636,24 @@ connectivity:
       labels:
       - minus
     strategy: bsb.connectivity.FixedIndegree
-  io_to_mli_plus:
+  io_to_mli:
     io_pc_connectivity:
-    - io_to_purkinje_plus
-    mli_pc_connectivity:
-    - basket_to_purkinje_plus
-    - stellate_to_purkinje_plus
-    postsynaptic:
-      cell_types:
-      - basket_cell
-      - stellate_cell
-    pre_cell_pc:
-      cell_types:
-      - purkinje_cell
-      labels:
-      - plus
-    presynaptic:
-      cell_types:
-      - io
-      labels:
-      - plus
-    strategy: cerebellar_models.connectome.io_molecular.ConnectomeIO_MLI
-  io_to_mli_minus:
-    io_pc_connectivity:
+    - io_to_purkinje
     - io_to_purkinje_minus
     mli_pc_connectivity:
-    - basket_to_purkinje_minus
-    - stellate_to_purkinje_minus
+    - basket_to_purkinje
+    - stellate_to_purkinje
     postsynaptic:
       cell_types:
       - basket_cell
       - stellate_cell
-    pre_cell_pc:
-      cell_types:
-      - purkinje_cell
-      labels:
-      - minus
+    pre_cell_pc: purkinje_cell
     presynaptic:
       cell_types:
       - io
-      labels:
-      - minus
     strategy: cerebellar_models.connectome.io_molecular.ConnectomeIO_MLI
-  io_to_dcn_p_plus:
-    outdegree: 30
+  io_to_dcn_p:
+    affinity: 0.5
     postsynaptic:
       cell_types:
       - dcn_p
@@ -782,9 +664,9 @@ connectivity:
       - io
       labels:
       - plus
-    strategy: bsb.connectivity.FixedOutdegree
+    strategy: bsb.connectivity.AllToAll
   io_to_dcn_p_minus:
-    outdegree: 30
+    affinity: 0.5
     postsynaptic:
       cell_types:
       - dcn_p
@@ -795,9 +677,9 @@ connectivity:
       - io
       labels:
       - minus
-    strategy: bsb.connectivity.FixedOutdegree
-  io_to_dcn_i_plus:
-    outdegree: 16
+    strategy: bsb.connectivity.AllToAll
+  io_to_dcn_i:
+    affinity: 0.5
     postsynaptic:
       cell_types:
       - dcn_i
@@ -808,9 +690,9 @@ connectivity:
       - io
       labels:
       - plus
-    strategy: bsb.connectivity.FixedOutdegree
+    strategy: bsb.connectivity.AllToAll
   io_to_dcn_i_minus:
-    outdegree: 16
+    affinity: 0.5
     postsynaptic:
       cell_types:
       - dcn_i
@@ -821,9 +703,9 @@ connectivity:
       - io
       labels:
       - minus
-    strategy: bsb.connectivity.FixedOutdegree
-  dcn_i_to_io_plus:
-    indegree: 16
+    strategy: bsb.connectivity.AllToAll
+  dcn_i_to_io:
+    affinity: 0.5
     postsynaptic:
       cell_types:
       - io
@@ -834,9 +716,9 @@ connectivity:
       - dcn_i
       labels:
       - plus
-    strategy: bsb.connectivity.FixedIndegree
+    strategy: bsb.connectivity.AllToAll
   dcn_i_to_io_minus:
-    indegree: 16
+    affinity: 0.5
     postsynaptic:
       cell_types:
       - io
@@ -847,27 +729,17 @@ connectivity:
       - dcn_i
       labels:
       - minus
-    strategy: bsb.connectivity.FixedIndegree
+    strategy: bsb.connectivity.AllToAll
 after_connectivity:
-  duplicate_conn_io_pc_plus:
-    conn_strategy: io_to_purkinje_plus
+  duplicate_conn_io_pc:
+    conn_strategy: io_to_purkinje
     contacts:
       distribution: norm
       loc: 500
       scale: 5
     strategy: cerebellar_models.connectome.io_purkinje.DuplicateSynapses
-  duplicate_conn_io_pc_minus:
-    conn_strategy: io_to_purkinje_minus
-    contacts:
-      distribution: norm
-      loc: 500
-      scale: 5
-    strategy: cerebellar_models.connectome.io_purkinje.DuplicateSynapses
-    # print_structure_report: # needs elephant
-    #   output_filename: bsb_report_structure.pdf
-    #   strategy: cerebellar_models.analysis.structure_analysis.RunStructureReport
 
 packages:
-- cerebellar-models~=0.9.0
+- cerebellar-models[nest]~=0.12.0
 - bsb~=7.0
 - bsb-nest~=7.0
