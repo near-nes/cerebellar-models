@@ -200,12 +200,12 @@ nest::ExtendedPostHistoryArchivingNode::get_K_values( double t,
 void
 nest::ExtendedPostHistoryArchivingNode::get_status( DictionaryDatum& d ) const
 {
-  def< double >( d, names::t_spike, get_spiketime_ms() );
-  def< double >( d, names::tau_minus, tau_minus_ );
-  def< double >( d, names::tau_minus_triplet, tau_minus_triplet_ );
-  def< double >( d, names::post_trace, trace_ );
+  d[ names::t_spike ] = static_cast< double >( get_spiketime_ms() );
+  d[ names::tau_minus ] = static_cast< double >( tau_minus_ );
+  d[ names::tau_minus_triplet ] = static_cast< double >( tau_minus_triplet_ );
+  d[ names::post_trace ] = static_cast< double >( trace_ );
 #ifdef DEBUG_ARCHIVER
-  def< int >( d, names::archiver_length, history_.size() );
+  d[ names::archiver_length ] = static_cast< long >( history_.size() );
 #endif
 
   // add status dict items from the parent class
@@ -218,8 +218,8 @@ nest::ExtendedPostHistoryArchivingNode::set_status( const DictionaryDatum& d )
   // We need to preserve values in case invalid values are set
   double new_tau_minus = tau_minus_;
   double new_tau_minus_triplet = tau_minus_triplet_;
-  updateValue< double >( d, names::tau_minus, new_tau_minus );
-  updateValue< double >( d, names::tau_minus_triplet, new_tau_minus_triplet );
+  d.update_value( names::tau_minus, new_tau_minus );
+  d.update_value( names::tau_minus_triplet, new_tau_minus_triplet );
 
   if ( new_tau_minus <= 0.0 or new_tau_minus_triplet <= 0.0 )
   {
@@ -236,7 +236,7 @@ nest::ExtendedPostHistoryArchivingNode::set_status( const DictionaryDatum& d )
 
   // check, if to clear spike history and K_minus
   bool clear = false;
-  updateValue< bool >( d, names::clear, clear );
+  d.update_value( names::clear, clear );
   if ( clear )
   {
     clear_history();

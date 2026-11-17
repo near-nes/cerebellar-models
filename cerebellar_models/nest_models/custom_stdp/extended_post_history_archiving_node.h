@@ -22,14 +22,12 @@
 #include "kernel_manager.h"
 
 // Includes from sli:
-#include "dictdatum.h"
-#include "nest_datums.h"
+#include "nest310_compat.h"
 #include "nest_time.h"
 #include "nest_types.h"
 #include "config.h"
 
 // Includes from sli:
-#include "dictdatum.h"
 
 
 namespace nest

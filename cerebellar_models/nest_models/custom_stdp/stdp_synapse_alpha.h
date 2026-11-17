@@ -33,8 +33,7 @@
 #include "event.h"
 
 // Includes from sli:
-#include "dictdatum.h"
-#include "dictutils.h"
+#include "nest310_compat.h"
 
 #include "histentry.h"
 #include "archiving_node.h"
@@ -353,13 +352,13 @@ void
 stdp_synapse_alpha< targetidentifierT >::get_status( DictionaryDatum& d ) const
 {
   ConnectionBase::get_status( d );
-  def< double >( d, names::weight, weight_ );
-  def< double >( d, names::Wmin, Wmin_ );
-  def< double >( d, names::Wmax, Wmax_ );
-  def< double >( d, names::tau, tau_ );
-  def< double >( d, names::Aplus, Aplus_ );
-  def< double >( d, names::Aminus, Aminus_ );
-  def< long >( d, names::size_of, sizeof( *this ) );
+  d[ names::weight ] = static_cast< double >( weight_ );
+  d[ names::Wmin ] = static_cast< double >( Wmin_ );
+  d[ names::Wmax ] = static_cast< double >( Wmax_ );
+  d[ names::tau ] = static_cast< double >( tau_ );
+  d[ names::Aplus ] = static_cast< double >( Aplus_ );
+  d[ names::Aminus ] = static_cast< double >( Aminus_ );
+  d[ names::size_of ] = static_cast< long >( sizeof( *this ) );
 }
 
 template < typename targetidentifierT >
@@ -367,12 +366,12 @@ void
 stdp_synapse_alpha< targetidentifierT >::set_status( const DictionaryDatum& d, ConnectorModel& cm )
 {
   ConnectionBase::set_status( d, cm );
-  updateValue< double >( d, names::weight, weight_ );
-  updateValue< double >( d, names::Wmin, Wmin_ );
-  updateValue< double >( d, names::Wmax, Wmax_ );
-  updateValue< double >( d, names::tau, tau_ );
-  updateValue< double >( d, names::Aplus, Aplus_ );
-  updateValue< double >( d, names::Aminus, Aminus_ );
+  d.update_value( names::weight, weight_ );
+  d.update_value( names::Wmin, Wmin_ );
+  d.update_value( names::Wmax, Wmax_ );
+  d.update_value( names::tau, tau_ );
+  d.update_value( names::Aplus, Aplus_ );
+  d.update_value( names::Aminus, Aminus_ );
 
   // check if weight_ and Wmax_ has the same sign
   if ( not( ( ( weight_ >= 0 ) - ( weight_ < 0 ) ) == ( ( Wmax_ >= 0 ) - ( Wmax_ < 0 ) ) ) )

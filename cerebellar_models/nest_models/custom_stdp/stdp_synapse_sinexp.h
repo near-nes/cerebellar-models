@@ -33,8 +33,7 @@
 #include "event.h"
 
 // Includes from sli:
-#include "dictdatum.h"
-#include "dictutils.h"
+#include "nest310_compat.h"
 
 #include "histentry.h"
 #include "archiving_node.h"
@@ -389,17 +388,17 @@ void
 stdp_synapse_sinexp< targetidentifierT >::get_status( DictionaryDatum& d ) const
 {
   ConnectionBase::get_status( d );
-  def< double >( d, names::weight, weight_ );
-  def< double >( d, names::Wmin, Wmin_ );
-  def< double >( d, names::Wmax, Wmax_ );
-  def< double >( d, names::tau, tau_ );
-  def< double >( d, names::Aplus, Aplus_ );
-  def< double >( d, names::Aminus, Aminus_ );
+  d[ names::weight ] = static_cast< double >( weight_ );
+  d[ names::Wmin ] = static_cast< double >( Wmin_ );
+  d[ names::Wmax ] = static_cast< double >( Wmax_ );
+  d[ names::tau ] = static_cast< double >( tau_ );
+  d[ names::Aplus ] = static_cast< double >( Aplus_ );
+  d[ names::Aminus ] = static_cast< double >( Aminus_ );
 
 
-  def< double >(d, nest::stdp_names::t_0, get_t0());
+  d[ nest::stdp_names::t_0 ] = static_cast< double >( get_t0() );
 
-  def< long >( d, names::size_of, sizeof( *this ) );
+  d[ names::size_of ] = static_cast< long >( sizeof( *this ) );
 }
 
 template < typename targetidentifierT >
@@ -407,15 +406,15 @@ void
 stdp_synapse_sinexp< targetidentifierT >::set_status( const DictionaryDatum& d, ConnectorModel& cm )
 {
   ConnectionBase::set_status( d, cm );
-  updateValue< double >( d, names::weight, weight_ );
-  updateValue< double >( d, names::Wmin, Wmin_ );
-  updateValue< double >( d, names::Wmax, Wmax_ );
-  updateValue< double >( d, names::tau, tau_ );
-  updateValue< double >( d, names::Aplus, Aplus_ );
-  updateValue< double >( d, names::Aminus, Aminus_ );
+  d.update_value( names::weight, weight_ );
+  d.update_value( names::Wmin, Wmin_ );
+  d.update_value( names::Wmax, Wmax_ );
+  d.update_value( names::tau, tau_ );
+  d.update_value( names::Aplus, Aplus_ );
+  d.update_value( names::Aminus, Aminus_ );
 
   double tmp_t0 = get_t0();
-  updateValue<double>(d, nest::stdp_names::t_0, tmp_t0);
+  d.update_value( nest::stdp_names::t_0, tmp_t0);
 
   // check if weight_ and Wmax_ has the same sign
   if ( not( ( ( weight_ >= 0 ) - ( weight_ < 0 ) ) == ( ( Wmax_ >= 0 ) - ( Wmax_ < 0 ) ) ) )

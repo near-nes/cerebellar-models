@@ -56,7 +56,7 @@
 #include "universal_data_logger.h"
 
 // Includes from sli:
-#include "dictdatum.h"
+#include "nest310_compat.h"
 
 namespace nest
 {
@@ -1264,63 +1264,63 @@ inline nest_port_t eglif_pc_nestml::handles_test_event(nest::DataLoggingRequest&
 inline void eglif_pc_nestml::get_status(DictionaryDatum &__d) const
 {
   // parameters
-  def< double >(__d, eglif_pc_nestml_names::_C_m, get_C_m());
-  def< double >(__d, eglif_pc_nestml_names::_tau_m, get_tau_m());
-  def< double >(__d, eglif_pc_nestml_names::_E_L, get_E_L());
-  def< double >(__d, eglif_pc_nestml_names::_t_ref, get_t_ref());
-  def< double >(__d, eglif_pc_nestml_names::_V_reset, get_V_reset());
-  def< double >(__d, eglif_pc_nestml_names::_V_th, get_V_th());
-  def< double >(__d, eglif_pc_nestml_names::_Vmin, get_Vmin());
-  def< double >(__d, eglif_pc_nestml_names::_I_e, get_I_e());
-  def< double >(__d, eglif_pc_nestml_names::_Vinit, get_Vinit());
-  def< double >(__d, eglif_pc_nestml_names::_lambda_0, get_lambda_0());
-  def< double >(__d, eglif_pc_nestml_names::_tau_V, get_tau_V());
-  def< double >(__d, eglif_pc_nestml_names::_kadap, get_kadap());
-  def< double >(__d, eglif_pc_nestml_names::_k2, get_k2());
-  def< double >(__d, eglif_pc_nestml_names::_k1, get_k1());
-  def< double >(__d, eglif_pc_nestml_names::_A1, get_A1());
-  def< double >(__d, eglif_pc_nestml_names::_A2, get_A2());
-  def< double >(__d, eglif_pc_nestml_names::_E_rev1, get_E_rev1());
-  def< double >(__d, eglif_pc_nestml_names::_E_rev2, get_E_rev2());
-  def< double >(__d, eglif_pc_nestml_names::_E_rev3, get_E_rev3());
-  def< double >(__d, eglif_pc_nestml_names::_E_rev4, get_E_rev4());
-  def< double >(__d, eglif_pc_nestml_names::_tau_syn1, get_tau_syn1());
-  def< double >(__d, eglif_pc_nestml_names::_tau_syn2, get_tau_syn2());
-  def< double >(__d, eglif_pc_nestml_names::_tau_syn3, get_tau_syn3());
-  def< double >(__d, eglif_pc_nestml_names::_tau_syn4, get_tau_syn4());
-  def< double >(__d, eglif_pc_nestml_names::_offset, get_offset());
+  __d[ eglif_pc_nestml_names::_C_m ] = static_cast< double >( get_C_m() );
+  __d[ eglif_pc_nestml_names::_tau_m ] = static_cast< double >( get_tau_m() );
+  __d[ eglif_pc_nestml_names::_E_L ] = static_cast< double >( get_E_L() );
+  __d[ eglif_pc_nestml_names::_t_ref ] = static_cast< double >( get_t_ref() );
+  __d[ eglif_pc_nestml_names::_V_reset ] = static_cast< double >( get_V_reset() );
+  __d[ eglif_pc_nestml_names::_V_th ] = static_cast< double >( get_V_th() );
+  __d[ eglif_pc_nestml_names::_Vmin ] = static_cast< double >( get_Vmin() );
+  __d[ eglif_pc_nestml_names::_I_e ] = static_cast< double >( get_I_e() );
+  __d[ eglif_pc_nestml_names::_Vinit ] = static_cast< double >( get_Vinit() );
+  __d[ eglif_pc_nestml_names::_lambda_0 ] = static_cast< double >( get_lambda_0() );
+  __d[ eglif_pc_nestml_names::_tau_V ] = static_cast< double >( get_tau_V() );
+  __d[ eglif_pc_nestml_names::_kadap ] = static_cast< double >( get_kadap() );
+  __d[ eglif_pc_nestml_names::_k2 ] = static_cast< double >( get_k2() );
+  __d[ eglif_pc_nestml_names::_k1 ] = static_cast< double >( get_k1() );
+  __d[ eglif_pc_nestml_names::_A1 ] = static_cast< double >( get_A1() );
+  __d[ eglif_pc_nestml_names::_A2 ] = static_cast< double >( get_A2() );
+  __d[ eglif_pc_nestml_names::_E_rev1 ] = static_cast< double >( get_E_rev1() );
+  __d[ eglif_pc_nestml_names::_E_rev2 ] = static_cast< double >( get_E_rev2() );
+  __d[ eglif_pc_nestml_names::_E_rev3 ] = static_cast< double >( get_E_rev3() );
+  __d[ eglif_pc_nestml_names::_E_rev4 ] = static_cast< double >( get_E_rev4() );
+  __d[ eglif_pc_nestml_names::_tau_syn1 ] = static_cast< double >( get_tau_syn1() );
+  __d[ eglif_pc_nestml_names::_tau_syn2 ] = static_cast< double >( get_tau_syn2() );
+  __d[ eglif_pc_nestml_names::_tau_syn3 ] = static_cast< double >( get_tau_syn3() );
+  __d[ eglif_pc_nestml_names::_tau_syn4 ] = static_cast< double >( get_tau_syn4() );
+  __d[ eglif_pc_nestml_names::_offset ] = static_cast< double >( get_offset() );
 
   // initial values for state variables in ODE or kernel
-  def< double >(__d, eglif_pc_nestml_names::_V_m, get_V_m());
-  def< double >(__d, eglif_pc_nestml_names::_I_adap, get_I_adap());
-  def< double >(__d, eglif_pc_nestml_names::_I_dep, get_I_dep());
-  def< long >(__d, eglif_pc_nestml_names::_r, get_r());
-  def< double >(__d, eglif_pc_nestml_names::_lambda, get_lambda());
-  def< double >(__d, eglif_pc_nestml_names::_cf_buffer, get_cf_buffer());
-  def< double >(__d, eglif_pc_nestml_names::_gr_buffer, get_gr_buffer());
-  def< double >(__d, eglif_pc_nestml_names::_last_io, get_last_io());
-  def< double >(__d, eglif_pc_nestml_names::_tick, get_tick());
-  def< double >(__d, eglif_pc_nestml_names::_complex_flag, get_complex_flag());
-  def< double >(__d, eglif_pc_nestml_names::_g4__X__rec4, get_g4__X__rec4());
-  def< double >(__d, eglif_pc_nestml_names::_g4__X__rec4__d, get_g4__X__rec4__d());
-  def< double >(__d, eglif_pc_nestml_names::_g2__X__rec2, get_g2__X__rec2());
-  def< double >(__d, eglif_pc_nestml_names::_g2__X__rec2__d, get_g2__X__rec2__d());
-  def< double >(__d, eglif_pc_nestml_names::_g1__X__rec1, get_g1__X__rec1());
-  def< double >(__d, eglif_pc_nestml_names::_g1__X__rec1__d, get_g1__X__rec1__d());
-  def< double >(__d, eglif_pc_nestml_names::_g3__X__rec3, get_g3__X__rec3());
-  def< double >(__d, eglif_pc_nestml_names::_g3__X__rec3__d, get_g3__X__rec3__d());
+  __d[ eglif_pc_nestml_names::_V_m ] = static_cast< double >( get_V_m() );
+  __d[ eglif_pc_nestml_names::_I_adap ] = static_cast< double >( get_I_adap() );
+  __d[ eglif_pc_nestml_names::_I_dep ] = static_cast< double >( get_I_dep() );
+  __d[ eglif_pc_nestml_names::_r ] = static_cast< long >( get_r() );
+  __d[ eglif_pc_nestml_names::_lambda ] = static_cast< double >( get_lambda() );
+  __d[ eglif_pc_nestml_names::_cf_buffer ] = static_cast< double >( get_cf_buffer() );
+  __d[ eglif_pc_nestml_names::_gr_buffer ] = static_cast< double >( get_gr_buffer() );
+  __d[ eglif_pc_nestml_names::_last_io ] = static_cast< double >( get_last_io() );
+  __d[ eglif_pc_nestml_names::_tick ] = static_cast< double >( get_tick() );
+  __d[ eglif_pc_nestml_names::_complex_flag ] = static_cast< double >( get_complex_flag() );
+  __d[ eglif_pc_nestml_names::_g4__X__rec4 ] = static_cast< double >( get_g4__X__rec4() );
+  __d[ eglif_pc_nestml_names::_g4__X__rec4__d ] = static_cast< double >( get_g4__X__rec4__d() );
+  __d[ eglif_pc_nestml_names::_g2__X__rec2 ] = static_cast< double >( get_g2__X__rec2() );
+  __d[ eglif_pc_nestml_names::_g2__X__rec2__d ] = static_cast< double >( get_g2__X__rec2__d() );
+  __d[ eglif_pc_nestml_names::_g1__X__rec1 ] = static_cast< double >( get_g1__X__rec1() );
+  __d[ eglif_pc_nestml_names::_g1__X__rec1__d ] = static_cast< double >( get_g1__X__rec1__d() );
+  __d[ eglif_pc_nestml_names::_g3__X__rec3 ] = static_cast< double >( get_g3__X__rec3() );
+  __d[ eglif_pc_nestml_names::_g3__X__rec3__d ] = static_cast< double >( get_g3__X__rec3__d() );
 
   ExtendedPostHistoryArchivingNode::get_status( __d );
-  DictionaryDatum __receptor_type = new Dictionary();
-    ( *__receptor_type )[ "REC1" ] = 1;
-    ( *__receptor_type )[ "REC2" ] = 2;
-    ( *__receptor_type )[ "REC3" ] = 3;
-    ( *__receptor_type )[ "REC4" ] = 4;
-    ( *__receptor_type )[ "CF_SPIKES" ] = 5;
+  Dictionary __receptor_type;
+    __receptor_type[ "REC1" ] = 1L;
+    __receptor_type[ "REC2" ] = 2L;
+    __receptor_type[ "REC3" ] = 3L;
+    __receptor_type[ "REC4" ] = 4L;
+    __receptor_type[ "CF_SPIKES" ] = 5L;
     ( *__d )[ "receptor_types" ] = __receptor_type;
 
   (*__d)[nest::names::recordables] = recordablesMap_.get_list();
-  def< double >(__d, nest::names::gsl_error_tol, P_.__gsl_error_tol);
+  __d[ nest::names::gsl_error_tol ] = static_cast< double >( P_.__gsl_error_tol );
   if ( P_.__gsl_error_tol <= 0. ){
     throw nest::BadProperty( "The gsl_error_tol must be strictly positive." );
   }
@@ -1330,92 +1330,92 @@ inline void eglif_pc_nestml::set_status(const DictionaryDatum &__d)
 {
   // parameters
   double tmp_C_m = get_C_m();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_C_m, tmp_C_m, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_C_m, tmp_C_m, this);
   double tmp_tau_m = get_tau_m();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_tau_m, tmp_tau_m, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_tau_m, tmp_tau_m, this);
   double tmp_E_L = get_E_L();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_E_L, tmp_E_L, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_E_L, tmp_E_L, this);
   double tmp_t_ref = get_t_ref();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_t_ref, tmp_t_ref, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_t_ref, tmp_t_ref, this);
   double tmp_V_reset = get_V_reset();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_V_reset, tmp_V_reset, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_V_reset, tmp_V_reset, this);
   double tmp_V_th = get_V_th();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_V_th, tmp_V_th, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_V_th, tmp_V_th, this);
   double tmp_Vmin = get_Vmin();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_Vmin, tmp_Vmin, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_Vmin, tmp_Vmin, this);
   double tmp_I_e = get_I_e();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_I_e, tmp_I_e, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_I_e, tmp_I_e, this);
   double tmp_Vinit = get_Vinit();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_Vinit, tmp_Vinit, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_Vinit, tmp_Vinit, this);
   double tmp_lambda_0 = get_lambda_0();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_lambda_0, tmp_lambda_0, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_lambda_0, tmp_lambda_0, this);
   double tmp_tau_V = get_tau_V();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_tau_V, tmp_tau_V, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_tau_V, tmp_tau_V, this);
   double tmp_kadap = get_kadap();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_kadap, tmp_kadap, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_kadap, tmp_kadap, this);
   double tmp_k2 = get_k2();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_k2, tmp_k2, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_k2, tmp_k2, this);
   double tmp_k1 = get_k1();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_k1, tmp_k1, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_k1, tmp_k1, this);
   double tmp_A1 = get_A1();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_A1, tmp_A1, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_A1, tmp_A1, this);
   double tmp_A2 = get_A2();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_A2, tmp_A2, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_A2, tmp_A2, this);
   double tmp_E_rev1 = get_E_rev1();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_E_rev1, tmp_E_rev1, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_E_rev1, tmp_E_rev1, this);
   double tmp_E_rev2 = get_E_rev2();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_E_rev2, tmp_E_rev2, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_E_rev2, tmp_E_rev2, this);
   double tmp_E_rev3 = get_E_rev3();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_E_rev3, tmp_E_rev3, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_E_rev3, tmp_E_rev3, this);
   double tmp_E_rev4 = get_E_rev4();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_E_rev4, tmp_E_rev4, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_E_rev4, tmp_E_rev4, this);
   double tmp_tau_syn1 = get_tau_syn1();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_tau_syn1, tmp_tau_syn1, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_tau_syn1, tmp_tau_syn1, this);
   double tmp_tau_syn2 = get_tau_syn2();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_tau_syn2, tmp_tau_syn2, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_tau_syn2, tmp_tau_syn2, this);
   double tmp_tau_syn3 = get_tau_syn3();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_tau_syn3, tmp_tau_syn3, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_tau_syn3, tmp_tau_syn3, this);
   double tmp_tau_syn4 = get_tau_syn4();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_tau_syn4, tmp_tau_syn4, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_tau_syn4, tmp_tau_syn4, this);
   double tmp_offset = get_offset();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_offset, tmp_offset, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_offset, tmp_offset, this);
   // initial values for state variables in ODE or kernel
   double tmp_V_m = get_V_m();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_V_m, tmp_V_m, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_V_m, tmp_V_m, this);
   double tmp_I_adap = get_I_adap();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_I_adap, tmp_I_adap, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_I_adap, tmp_I_adap, this);
   double tmp_I_dep = get_I_dep();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_I_dep, tmp_I_dep, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_I_dep, tmp_I_dep, this);
   long tmp_r = get_r();
-  nest::updateValueParam<long>(__d, eglif_pc_nestml_names::_r, tmp_r, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_r, tmp_r, this);
   double tmp_lambda = get_lambda();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_lambda, tmp_lambda, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_lambda, tmp_lambda, this);
   double tmp_cf_buffer = get_cf_buffer();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_cf_buffer, tmp_cf_buffer, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_cf_buffer, tmp_cf_buffer, this);
   double tmp_gr_buffer = get_gr_buffer();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_gr_buffer, tmp_gr_buffer, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_gr_buffer, tmp_gr_buffer, this);
   double tmp_last_io = get_last_io();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_last_io, tmp_last_io, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_last_io, tmp_last_io, this);
   double tmp_tick = get_tick();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_tick, tmp_tick, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_tick, tmp_tick, this);
   double tmp_complex_flag = get_complex_flag();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_complex_flag, tmp_complex_flag, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_complex_flag, tmp_complex_flag, this);
   double tmp_g4__X__rec4 = get_g4__X__rec4();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_g4__X__rec4, tmp_g4__X__rec4, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_g4__X__rec4, tmp_g4__X__rec4, this);
   double tmp_g4__X__rec4__d = get_g4__X__rec4__d();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_g4__X__rec4__d, tmp_g4__X__rec4__d, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_g4__X__rec4__d, tmp_g4__X__rec4__d, this);
   double tmp_g2__X__rec2 = get_g2__X__rec2();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_g2__X__rec2, tmp_g2__X__rec2, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_g2__X__rec2, tmp_g2__X__rec2, this);
   double tmp_g2__X__rec2__d = get_g2__X__rec2__d();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_g2__X__rec2__d, tmp_g2__X__rec2__d, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_g2__X__rec2__d, tmp_g2__X__rec2__d, this);
   double tmp_g1__X__rec1 = get_g1__X__rec1();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_g1__X__rec1, tmp_g1__X__rec1, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_g1__X__rec1, tmp_g1__X__rec1, this);
   double tmp_g1__X__rec1__d = get_g1__X__rec1__d();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_g1__X__rec1__d, tmp_g1__X__rec1__d, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_g1__X__rec1__d, tmp_g1__X__rec1__d, this);
   double tmp_g3__X__rec3 = get_g3__X__rec3();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_g3__X__rec3, tmp_g3__X__rec3, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_g3__X__rec3, tmp_g3__X__rec3, this);
   double tmp_g3__X__rec3__d = get_g3__X__rec3__d();
-  nest::updateValueParam<double>(__d, eglif_pc_nestml_names::_g3__X__rec3__d, tmp_g3__X__rec3__d, this);
+  nest::update_value_param(__d, eglif_pc_nestml_names::_g3__X__rec3__d, tmp_g3__X__rec3__d, this);
 
   // We now know that (ptmp, stmp) are consistent. We do not
   // write them back to (P_, S_) before we are also sure that
@@ -1471,7 +1471,7 @@ inline void eglif_pc_nestml::set_status(const DictionaryDatum &__d)
 
 
 
-  updateValue< double >(__d, nest::names::gsl_error_tol, P_.__gsl_error_tol);
+  __d.update_value( nest::names::gsl_error_tol, P_.__gsl_error_tol);
   if ( P_.__gsl_error_tol <= 0. )
   {
     throw nest::BadProperty( "The gsl_error_tol must be strictly positive." );
